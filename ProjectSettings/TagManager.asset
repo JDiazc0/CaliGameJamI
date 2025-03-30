@@ -44,11 +44,17 @@ TagManager:
   - name: Background
     uniqueID: 3708639525
     locked: 0
-  - name: Player
-    uniqueID: 2686901257
-    locked: 0
   - name: CanvasLight
     uniqueID: 3735880561
+    locked: 0
+  - name: Hazards
+    uniqueID: 2473236041
+    locked: 0
+  - name: Ground
+    uniqueID: 3737420115
+    locked: 0
+  - name: Player
+    uniqueID: 2686901257
     locked: 0
   m_RenderingLayers:
   - Default
