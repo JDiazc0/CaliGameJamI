@@ -29,6 +29,7 @@ public class TemporaryLight : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFX(pickupSound, 0.7f);
             LightManager.Instance.ResetToStartColor(0);
             LightManager.Instance.StartColorChange(darkColor, lightDuration);
             Destroy(gameObject);

@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelAnimation: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: fa19574cd8f1b4a41945cc7f82e88f42, type: 3}
 --- !u!114 &5471433641092577784
 MonoBehaviour:
   m_ObjectHideFlags: 0

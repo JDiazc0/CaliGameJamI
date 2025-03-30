@@ -142,7 +142,7 @@ MonoBehaviour:
   darkColor: {r: 0, g: 0, b: 0, a: 1}
   lightDuration: 1
   pickupEffect: {fileID: 0}
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 71b3edbcd5fbd3f45901dfbbab99bcc1, type: 3}
   spotLight: {fileID: 550838830824641638}
   minFalloff: 0.3
   maxFalloff: 0.8
