@@ -5,11 +5,11 @@ public class PlayerController : MonoBehaviour
     [Header("Settings")]
     public float speed = 4f;
     public float jumpForce = 7f;
-    public float longIdleDelay = 5f;
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool isTouchingWall;
+    private Animator animator;
 
     [Header("Ground Check")]
     public Transform groundCheck;
@@ -23,13 +23,20 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // Check if touching wall
-        RaycastHit2D wallHit = Physics2D.Raycast(wallCheck.position, Vector2.right * transform.localScale.x, wallCheckDistance, groundLayer);
+
+        Vector2 boxSize = new Vector2(0.1f, 1f);
+        float castDistance = wallCheckDistance;
+
+        RaycastHit2D wallHit = Physics2D.BoxCast(
+            wallCheck.position, boxSize, 0f, Vector2.right * transform.localScale.x, castDistance, groundLayer);
+
         isTouchingWall = wallHit.collider != null;
+
 
         // Movement Input
         float moveInput = Input.GetAxis("Horizontal");
@@ -53,6 +60,18 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
+        animator.SetFloat("movement", Mathf.Abs(moveInput));
+        animator.SetBool("isJumping", !isGrounded && rb.linearVelocity.y > 0);
+
+        if (!isGrounded && rb.linearVelocity.y < 0)
+        {
+            animator.SetBool("isFalling", true);
+        }
+        else if (isGrounded)
+        {
+            animator.SetBool("isFalling", false);
+        }
+
         // Jump
         if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
         {
@@ -67,12 +86,22 @@ public class PlayerController : MonoBehaviour
     {
         if (groundCheck != null && wallCheck != null)
         {
+            // Gizmo para el GroundCheck (círculo)
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
 
-            // WallCheck Gizmo ajustado a la dirección del personaje
+            // Gizmo para el WallCheck (BoxCast)
             Gizmos.color = Color.blue;
-            Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.right * transform.localScale.x * wallCheckDistance);
+            Vector2 boxSize = new Vector2(0.1f, 1f); // Mismo tamaño que en el BoxCast
+            float castDistance = wallCheckDistance;
+
+            // Dibuja el cubo en la posición final del BoxCast
+            Vector3 castEndPosition = wallCheck.position +
+                                     Vector3.right * transform.localScale.x * castDistance;
+            Gizmos.DrawWireCube(castEndPosition, boxSize);
+
+            // Dibuja una línea desde el origen hasta el cubo
+            Gizmos.DrawLine(wallCheck.position, castEndPosition);
         }
     }
 }

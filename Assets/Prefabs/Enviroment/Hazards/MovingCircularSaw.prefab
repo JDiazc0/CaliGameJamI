@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 3512552751865629325}
   - component: {fileID: 5824168494771707086}
   - component: {fileID: 3050070976197583169}
+  - component: {fileID: 2964915639103091578}
   m_Layer: 0
   m_Name: MovingCircularSaw
   m_TagString: Untagged
@@ -163,7 +164,7 @@ SpriteRenderer:
   m_SortingLayerID: -1821731255
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -3856703243772173698, guid: b24d52cd187ca544db596f1adbc499cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -202,3 +203,25 @@ MonoBehaviour:
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   speed: 2
+--- !u!95 &2964915639103091578
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7264037823769326415}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9716e0782ea54af4db37a3ac5a46e83d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
