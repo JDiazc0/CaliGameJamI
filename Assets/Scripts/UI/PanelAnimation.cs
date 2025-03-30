@@ -21,7 +21,7 @@ public class PanelAnimation : MonoBehaviour
         }
     }
 
-    public void StartTransition(string currentText, string nextText)
+    public void StartTransition(string currentText, string nextText, float delayAlpha = 2.5f, float delayMove = 3f)
     {
         currentLevelText.text = currentText;
         nextLevelText.text = nextText;
@@ -30,10 +30,10 @@ public class PanelAnimation : MonoBehaviour
         nextTextColor.a = 0;
         nextLevelText.color = nextTextColor;
 
-        LeanTween.moveY(currentLevelText.rectTransform, currentLevelText.rectTransform.anchoredPosition.y + 250, 3f)
+        LeanTween.moveY(currentLevelText.rectTransform, currentLevelText.rectTransform.anchoredPosition.y + 250, delayMove)
             .setEase(LeanTweenType.easeInOutQuad);
 
-        LeanTween.value(currentLevelText.gameObject, 1, 0, 2.5f)
+        LeanTween.value(currentLevelText.gameObject, 1, 0, delayAlpha)
             .setOnUpdate((float val) =>
             {
                 Color color = currentLevelText.color;
